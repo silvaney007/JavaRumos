@@ -9,6 +9,7 @@ public class Aluno extends Pessoa {
 
     public Aluno(String nome, int idade, int peso, String genero) {
         super(nome, idade, peso, genero);
+        this.setFuncao("Aluno");
     }
 
     public String getMatricula() {
@@ -19,13 +20,4 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
     }
 
-    @Override
-    public String info() {
-        return "Aluno{" +
-                ", nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", genero='" + genero + '\'' +
-                "matricula='" + matricula + '\'' +
-                '}';
-    }
 }

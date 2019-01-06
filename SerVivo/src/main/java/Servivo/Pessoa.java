@@ -2,17 +2,22 @@ package Servivo;
 
 public class Pessoa extends Servivo{
 
-    protected String corOlhos;
-    protected String cabelo;
-    protected int altura;
+    private String corOlhos;
+    private String cabelo;
+    private int altura;
+    private String funcao;
 
     public Pessoa(String nome, int idade, int peso, String genero) {
         super(nome, idade, peso, genero);
+        this.setClassificacao("Mamifero");
     }
 
-    @Override
-    public void classificacao() {
-        this.setClassificacao("Mamifero");
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
 
     public int getAltura() {
@@ -42,14 +47,12 @@ public class Pessoa extends Servivo{
     @Override
     public String info() {
         return "Pessoa{" +
+                "funcao='" + funcao + '\'' +
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", peso=" + peso +
                 ", genero='" + genero + '\'' +
                 ", classificacao='" + classificacao + '\'' +
-                "corOlhos='" + corOlhos + '\'' +
-                ", cabelo='" + cabelo + '\'' +
-                ", altura=" + altura +
                 '}';
     }
 }

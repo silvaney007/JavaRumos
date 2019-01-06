@@ -3,12 +3,12 @@ package Pessoa;
 import Servivo.Pessoa;
 
 public class Trabalhador extends Pessoa {
-
     private String profissao;
     private int salario;
 
     public Trabalhador(String nome, int idade, int peso, String genero) {
         super(nome, idade, peso, genero);
+        this.setFuncao("Trabalhador");
     }
 
     public String getProfissao() {
@@ -25,16 +25,5 @@ public class Trabalhador extends Pessoa {
 
     public void setSalario(int salario) {
         this.salario = salario;
-    }
-
-    @Override
-    public String info() {
-        return "Trabalhador{" +
-                ", nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", genero='" + genero + '\'' +
-                "profissao='" + profissao + '\'' +
-                ", salario=" + salario +
-                '}';
     }
 }

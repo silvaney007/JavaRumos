@@ -1,0 +1,1 @@
+package Animal.Peixe;import Servivo.Animal;public class PeixePalhaco extends Animal {    public PeixePalhaco(String nome, int idade, int peso, String genero) {        super(nome, idade, peso, genero);        this.setClassificacao("Peixe");        this.setAnimal("Peixe-Palhaço");    }}
