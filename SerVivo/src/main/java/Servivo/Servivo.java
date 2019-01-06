@@ -19,8 +19,6 @@ public  abstract class Servivo {
         this.idade++;
     }
 
-    public abstract void classificacao();
-
     public abstract String info();
 
     public String getClassificacao() {
@@ -58,6 +56,7 @@ public  abstract class Servivo {
     public String getGenero() {
         return genero;
     }
+
     public void setGenero(String genero) {
         this.genero = genero;
     }
