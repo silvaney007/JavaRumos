@@ -1,4 +1,5 @@
 import Domain.*;
+import Service.AccountApp;
 import Service.AgencyApp;
 import com.github.javafaker.Faker;
 import org.assertj.core.api.Assertions;
@@ -47,23 +48,30 @@ public class AgencyAppTest {
 
             //behind desk work done by AgencyService
             AgencyApp agencyService = new AgencyApp();
+            AccountApp accountService = new AccountApp();
 
             //Cristiano Ronaldo
-            Client cr7 = new Client("Cristiano Ronaldo",22,2589898,
-                    "fvfdv@dvsdv","sdvdsf");
+            Client cr7 = new Client("Cristiano Ronaldo",22,faker.phoneNumber().cellPhone(),
+                    "cr7@gmail.com",faker.job().title());
             Agency novoBanco = new Agency(faker.address().fullAddress());
 
-
-            Account clientAccount = agencyService.openAccount(novoBanco, cr7);
+            // register client to agency
+            Client cr7client = agencyService.registerClient(novoBanco, cr7);
 
             //ask Cristiano Ronaldo
             System.out.println("Client:" + cr7.toString());
             System.out.println();
-            Assertions.assertThat(cr7.getAccount()).containsExactly(clientAccount);
+            assertThat(cr7).isEqualToComparingOnlyGivenFields(cr7client);
 
             //ask bank agency
             System.out.println("Agency Clients:" + novoBanco.toString());
             System.out.println();
-    }
-}
 
+            // create new order account
+            Account account = accountService.orderAccount(cr7client);
+            assertThat(cr7client.getAccount()).containsExactly(account);
+            assertThat(cr7client.getAgency()).isEqualTo(novoBanco);
+            System.out.println("Client Account "+ cr7client.toString());
+
+        }
+}

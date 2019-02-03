@@ -14,11 +14,11 @@ public class Client {
     List<BankCard> card;
     String clientName;
     int clientId;
-    int clientPhone;
+    String clientPhone;
     String clientMails;
     String clientJob;
 
-    public Client(String clientName, int clientId, int clientPhone, String clientMails, String clientJob) {
+    public Client(String clientName, int clientId, String clientPhone, String clientMails, String clientJob) {
         this.clientName = clientName;
         this.clientId = clientId;
         this.clientPhone = clientPhone;

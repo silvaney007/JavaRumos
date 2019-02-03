@@ -9,20 +9,14 @@ public class BankCard {
 
     static int id;
     int cardNumber;
-    boolean credCard;
-    boolean debCard;
+    Account account;
+    double balance;
+    double plafond;
 
-     public BankCard (){
+
+    public BankCard(Account account){
         this.cardNumber = id++;
-    }
-
-    public void setCredCard(boolean credCard) {
-            this.credCard = credCard;
-            this.debCard = false;
-    }
-
-    public void setDebCard(boolean debCard) {
-        this.debCard = debCard;
-        this.credCard =false;
+        this.account = account;
+        this.balance = account.getBalance();
     }
 }

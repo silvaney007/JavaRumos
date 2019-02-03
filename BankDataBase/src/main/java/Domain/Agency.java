@@ -14,22 +14,25 @@ public class Agency{
     List<Client> client;
     List<Account> accounts;
     int clientAgencyId;
-    static int id1;
+    static int id1, id2;
+    int agencyId;
+
     public Agency(String address) {
         this.address = address;
+        this.agencyId = id1++;
+
     }
 
     public void setClient(List<Client> client) {
         this.client = client;
-        this.clientAgencyId = id1++;
+        this.clientAgencyId = id2++;
     }
 
     @Override
     public String toString() {
         return "Agency{" +
-                ", address='" + address + '\'' +
-                ", clients=" + client+
+                "address='" + address + '\'' +
+                ", agencyId=" + agencyId +
                 '}';
     }
-
 }
