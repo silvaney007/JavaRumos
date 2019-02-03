@@ -2,23 +2,31 @@ package Domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import java.util.Date;
-
 @AllArgsConstructor
 @Data
 
 public class Account {
 
-    Agency  agency;
     Client client;
     String accManager;
-    int accNumber;
     double balance;
-    Date date;
+    int accNumber;
+    static int id;
+    Date date=new Date();
 
-    public Account(Agency agency, Client client) {
-        this.agency = agency;
+    public Account(Client client) {
         this.client = client;
+        this.accNumber=id++;
+        date.getDate();
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accManager='" + accManager + '\'' +
+                ", balance=" + balance +
+                ", date=" + date +
+                '}';
     }
 }

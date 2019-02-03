@@ -12,7 +12,7 @@ public class AgencyApp {
     public BankApp bankService = new BankApp();
 
 
-    public List<Agency> setBankAgencies(Bank bank, Agency agency){
+    public List<Agency> setBankAgencies(Bank bank, Agency agency) {
 
         if (bank.getAgencies() == null || bank.getAgencies().isEmpty()) {
             bank.setAgencies(new ArrayList<Agency>());
@@ -30,24 +30,18 @@ public class AgencyApp {
         if (agency.getClient() == null || agency.getClient().isEmpty()) {
             agency.setClient(new ArrayList<Client>());
         }
-        agency.getClient().add(client);
-        client.setAgency(agency);
-        Account account = new Account(agency, client);
         if (client.getAccount() == null || client.getAccount().isEmpty()) {
             client.setAccount(new ArrayList<Account>());
         }
-            client.getAccount().add(account);
+        if (agency.getAccounts() == null || agency.getAccounts().isEmpty()) {
+            agency.setAccounts(new ArrayList<Account>());
+        }
+        agency.getClient().add(client);                         //assign agency client
+        client.setAgency(agency);                               //assign client agency
+        Account account = new Account(client);                  //create new account
+        agency.getAccounts().add(account);                      //assign agency account
+        client.getAccount().add(account);                        //assign client account
 
         return account;
     }
-
-    public void setNormalAccount(Account account, BankCard card){
-        account.getClient().getCard().add(card);
-    }
-
-    public void setVipAccount(Account account, BankCard card, String manager){
-        account.setAccManager(manager);
-        account.getClient().getCard().add(card);
-    }
-
 }

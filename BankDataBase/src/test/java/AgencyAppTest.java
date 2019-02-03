@@ -3,6 +3,8 @@ import Service.AgencyApp;
 import com.github.javafaker.Faker;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AgencyAppTest {
@@ -52,17 +54,16 @@ public class AgencyAppTest {
             Agency novoBanco = new Agency(faker.address().fullAddress());
 
 
-            Account account = agencyService.openAccount(novoBanco, cr7);
+            Account clientAccount = agencyService.openAccount(novoBanco, cr7);
 
             //ask Cristiano Ronaldo
             System.out.println("Client:" + cr7.toString());
-            //System.out.println("Client Account:" + cr7.getAccount());
-            Assertions.assertThat(cr7.getAccount()).containsExactly(account);
+            System.out.println();
+            Assertions.assertThat(cr7.getAccount()).containsExactly(clientAccount);
 
             //ask bank agency
-            //System.out.println("Agency:" + novoBanco);
-            //System.out.println("Agency Clients:" + novoBanco.getClient());
-            //System.out.println("Agency Client Accounts:" + novoBanco.getClientAccounts());
-        }
+            System.out.println("Agency Clients:" + novoBanco.toString());
+            System.out.println();
     }
+}
 
