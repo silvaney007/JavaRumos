@@ -7,39 +7,35 @@ import Domain.Client;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class AccountApp {
 
     Date date = new Date();
 
-    public void transfer(BankCard card, Account accountB, double transation) {
+    public boolean transfer(BankCard card, Account accountB, double transation) {
 
-        double balance = card.getBalance();
+        double balance = card.getAccount().getBalance();
         if (card.getAccount() != accountB && balance >= transation) {
-            card.setBalance(balance-transation);
-            card.getAccount().setBalance(card.getBalance());
+            card.getAccount().setBalance(balance-transation);
             accountB.setBalance((accountB.getBalance() + transation));
+            return true;
         } else {
-            System.out.println("Invalid Operation\n");
-        }
+            return false;        }
     }
 
     public void deposit(BankCard card, double trasation) {
-        double balance = card.getBalance();
-        card.setBalance(balance);
-        card.getAccount().setBalance(card.getBalance());
+        double balance = card.getAccount().getBalance();
+        card.getAccount().setBalance(balance+trasation);
     }
 
-    public double withdraw(BankCard card, double transation) {
-        double balance = card.getBalance();
+    public boolean withdraw(BankCard card, double transation) {
+        double balance = card.getAccount().getBalance();
         if (balance >= transation) {
-            card.setBalance(balance-transation);
-            card.getAccount().setBalance(card.getBalance());
-            return transation;
+            card.getAccount().setBalance(balance-transation);
+            return true;
         } else {
-            return -1.0;
+            return false;
         }
     }
 
@@ -91,17 +87,5 @@ public class AccountApp {
         BankCard card = new BankCard(account);
         card.setPlafond(0.0);
         return card;
-    }
-
-    public void CardTransation(BankCard card, double transation){
-        Scanner sc  = new Scanner(System.in);
-        int op = sc.nextInt();
-        switch (op){
-            case 1 : deposit(card,transation);
-            break;
-            case 2 : withdraw(card,transation);
-            break;
-            default: System.exit(0);
-        }
     }
 }

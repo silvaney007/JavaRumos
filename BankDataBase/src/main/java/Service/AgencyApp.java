@@ -24,25 +24,13 @@ public class AgencyApp {
         return bank.getAgencies();
     }
 
-    public Account openAccount(Client client, Account  account) {
-
-
-        if (client.getAccount() == null || client.getAccount().isEmpty()) {
-            client.setAccount(new ArrayList<Account>());
-        }
-        //Account account = new Account(client);                  //create new account
-        client.getAgency().getAccounts().add(account);          //assign agency account
-        client.getAccount().add(account);                       //assign client account
-
-        return account;
-    }
-
     public Client registerClient (Agency agency, Client client){
         //add client to agency
         if (agency.getClient() == null || agency.getClient().isEmpty()) {
             agency.setClient(new ArrayList<Client>());
         }
         agency.getClient().add(client);                         //assign agency client
+        agency.addClientAgencyId(client);                       //set client agency ID
         client.setAgency(agency);                               //assign client agency
 
         return client;

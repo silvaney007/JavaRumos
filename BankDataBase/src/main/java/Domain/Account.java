@@ -2,10 +2,8 @@ package Domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import java.time.LocalDateTime;
 
-import javax.smartcardio.Card;
-import java.util.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -18,12 +16,18 @@ public class Account {
     double balance;
     int accNumber;
     static int id = 100;
-    Date date=new Date();
+    LocalDateTime date;
 
     public Account(Client client) {
         this.client = client;
-        this.accNumber=id++;
-        date.getDate();
+        this.accNumber= ++id;
+        this.date = LocalDateTime.now();
+    }
+
+    public Account(){
+        this.accNumber= ++id;
+        this.date = LocalDateTime.now();
+
     }
 
     @Override

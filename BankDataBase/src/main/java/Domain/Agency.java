@@ -2,8 +2,6 @@ package Domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,21 +10,20 @@ public class Agency{
 
     String address;
     List<Client> client;
-    List<Account> accounts;
-    int clientAgencyId;
-    static int id1, id2;
+    static int id1, id2=10;
     int agencyId;
 
     public Agency(String address) {
         this.address = address;
-        this.agencyId = id1++;
+        this.agencyId = ++id1;
 
     }
 
-    public void setClient(List<Client> client) {
-        this.client = client;
-        this.clientAgencyId = id2++;
+    public void addClientAgencyId(Client client){
+       client.clientAgencyId = ++id2;
     }
+
+
 
     @Override
     public String toString() {

@@ -13,12 +13,14 @@ public class Client {
     List<Account> account;
     List<BankCard> card;
     String clientName;
-    int clientId;
+    String clientId;
     String clientPhone;
     String clientMails;
     String clientJob;
+    int clientAgencyId;
 
-    public Client(String clientName, int clientId, String clientPhone, String clientMails, String clientJob) {
+
+    public Client(String clientName, String clientId, String clientPhone, String clientMails, String clientJob) {
         this.clientName = clientName;
         this.clientId = clientId;
         this.clientPhone = clientPhone;
@@ -34,6 +36,7 @@ public class Client {
                 ", clientPhone=" + clientPhone +
                 ", clientMails='" + clientMails + '\'' +
                 ", clientJob='" + clientJob + '\'' +
+                ", agency=" +  agency +
                 ", account=" + account +
                 '}';
     }
